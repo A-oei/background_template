@@ -1,0 +1,106 @@
+.background-login {
+  width: 100vw;
+  height: 100vh;
+  background: url("../../assets/images/login-bg.jpg") no-repeat;
+  background-size: cover;
+
+  .background-login-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+
+    .login-form-title {
+      width: 800px;
+      height: 100px;
+      background: url("../../assets/images/login-title.png") no-repeat;
+      background-size: cover;
+      margin-top: 150px;
+    }
+    .login-form-wrap {
+      width: 830px;
+      height: 450px;
+      padding: 30px 20px;
+      background: url("../../assets/images/form-input-bg.png") no-repeat;
+      -webkit-background-size: cover;
+      background-size: cover;
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-end;
+
+      .form-wrap-input {
+        width: 290px;
+        height: 100%;
+      }
+    }
+
+    .footer-places {
+      color: #ffffff;
+      font-size: 14px;
+      text-align: center;
+      position: fixed;
+      bottom: 10%;
+    }
+  }
+  //登录输入框
+  .form-wrap-input {
+    h3 {
+      color: #517cd2;
+      font-weight: 100;
+      font-size: 18px;
+      margin-bottom: 65px;
+    }
+
+    .aoei-form-input::v-deep {
+      width: 270px;
+      height: 40px;
+      border: 1px solid #67c23a;
+      border-radius: 5px;
+      margin-bottom: 18px;
+      padding-left: 30px;
+      .form-input-wrap {
+        width: 100%;
+        > input {
+          border: none;
+          padding: 0;
+          &:focus {
+            border: none;
+          }
+        }
+        > i {
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          top: 50%;
+          left: -20px;
+          transform: translateY(-50%);
+          background: url("../../assets/images/login-form-username.png") no-repeat;
+          background-size: cover;
+        }
+      }
+      &:nth-of-type(2) {
+        .form-input-wrap {
+          i {
+            background: url("../../assets/images/login-form-password.png") no-repeat;
+          }
+        }
+      }
+    }
+
+    .login-form-button {
+      width: 270px;
+      height: 38px;
+      padding: 0;
+      border-radius: 5px;
+      //background-color: #517cd2;
+      margin-top: 36px;
+      font-size: 18px;
+      font-weight: 200;
+      //color: #ffffff;
+      text-align: center;
+      line-height: 38px;
+    }
+  }
+}
+

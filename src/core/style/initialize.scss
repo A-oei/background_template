@@ -1,0 +1,96 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  //字体抗锯齿
+  //https://segmentfault.com/q/1010000000467910
+  smoothing: antialiasedl;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
+  font: 12px/1.5 Microsoft YaHei, tahoma, arial, Hiragino Sans GB, \\5b8b\4f53, sans-serif;
+  color: #666666
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1;
+}
+
+input, select, option {
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+select, option {
+  appearance: none; //消除默认btn样式
+}
+
+button {
+  border: none;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  border: none;
+}
+
+a, s {
+  text-decoration: none;
+}
+
+i, var {
+  font-style: normal;
+}
+
+//清除浮动
+.clearfix {
+  clear: both;
+}
+
+.clearfix::after, .clearfix::before {
+  content: '';
+  display: block;
+}
+
+//单行超出部分显示为省略号
+.line-omit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//穿透
+.penetrate {
+  pointer-events: none;
+}
+
+
+
