@@ -6,7 +6,7 @@
                 <div class="form-wrap-input">
                     <h3>用户登录</h3>
                     <aoei-form ref="aoeiForm" :rules="rules">
-                        <form-input validator='username'
+                        <form-input :check='rules.username'
                                     placeholder="请输入用户名" v-model="username">
                             <template #formIcon>
                                 <i/>

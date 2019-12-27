@@ -1,0 +1,30 @@
+@import "../../core/style/public";
+
+.aoei-form-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  > label {
+    margin-right: 15px;
+    font-size: 14px;
+    color: $fontInitializedColor;
+    height: 100%;
+    line-height: 40px;
+  }
+  > input, > select {
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid $borderColor;
+    height: 100%;
+    padding: 0 15px;
+    width: 100%;
+    &:focus {
+      border: 1px solid $focusColor;
+    }
+  }
+}
+
+.is-disabled {
+  cursor: not-allowed;
+}

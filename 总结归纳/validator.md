@@ -69,8 +69,50 @@ callback(valid);
 this.$refs['aoeiForm'].validate((valid) => {})
 ```
 
+
+
 ##### FormInput配置参数
 
-|   参数    |       说明       |  类型  | 可选值 | 默认值 |
-| :-------: | :--------------: | :----: | :----: | :----: |
-| validator | 表单校验规则名称 | string |   -    |   -    |
+| 参数  |       说明       |   类型   | 可选值 | 默认值 |
+| :---: | :--------------: | :------: | :----: | :----: |
+| check | 表单校验规则方法 | function |   -    |   -    |
+
+在全局自定义指令`validator`
+
+```javascript
+Vue.directive('validator', {
+    bind(el, binding, vnode) {
+        el.addEventListener('blur', (e) => {
+            binding.value(vnode.elm.value)
+        })
+    }
+})
+```
+
+为当前添加了该指令的元素绑定`blur`事件，在该元素失去光标之后通过`binding.value`获取到校验规则，并将当前元素的值作为参数传入
+
+在`FormInput`内部`input`元素上添加`validator`指令
+
+```html
+<input :type="type" :placeholder="placeholder" v-validator="validatorFn"/>
+```
+
+在`validatorFn`方法内，我们可以获取到组件传递来的`check`值
+
+```javascript
+<form-input :check='rules.username' v-model="username">
+```
+
+`rules.username`就是针对`username`的校验规则，在`FormInput`内部`validatorFn1`方法内接收该方法，并使用`moonError`接收返回值，判断如果返回值不是`success`那么将`moonError`设置为错误提示，否则将`moonError`设置为空
+
+```javascript
+let validator: any = this.check['validator'];
+let moonError: string = validator(data);
+if (moonError != 'success') {
+    this.moonError = validator(data);
+}
+if (moonError == 'success') {
+    this.moonError = '';
+}
+```
+
