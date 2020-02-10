@@ -1,34 +1,7 @@
-# background_template
+## background_template 项目
 
-## Project setup
-```
-yarn install
-```
+###  实现功能
+* `input`输入框
+* `Message`消息提示
+* `sidebar`侧边导航栏
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Run your unit tests
-```
-yarn run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

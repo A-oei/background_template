@@ -4,16 +4,12 @@
  * @Description:请求封装
  */
 
+
 import axios from "axios";
 import main from "./public";
 import qs from "qs";
-
-//定义请求返回码
-enum httpCode {
-    success = 200,
-    overtime = 20107,//登录超时
-    tokenInvalid = 4010//token失效
-}
+import {Method} from './type/index';
+import {httpCode} from "./enum/index";
 
 let baseConfig: object = {
     baseURL: '',
@@ -88,7 +84,7 @@ interface Params {
  *@params isFormData 是否为formData格式，默认为false
  *@params isUpload 是否要上传文件，默认为false
  */
-let http = (ajax: any, url: string, method: string, params: Params, isFormData: boolean = false, isUpload: boolean = false, processor: any) => {
+let http = (ajax: any, url: string, method: Method, params: Params, isFormData: boolean = false, isUpload: boolean = false, processor: any) => {
 
     //ajax.defaults.baseURL (axios.defaults.baseURL指定全局默认路径)
     url = /^(http|https):\/\//.test(url) ? url : (ajax.defaults.baseURL + url);

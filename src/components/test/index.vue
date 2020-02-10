@@ -1,31 +1,20 @@
 <template>
-    <label>
-        {{label}}
-        <input v-on="inputListeners"/>
-    </label>
+    <div>
+        <slot></slot>
+        {{renderChild($createElement)}}
+        <slot name="test"></slot>
+    </div>
 </template>
-<script lang="ts">
+
+<script lang="ts" type="text/jsx">
     import {Vue, Component, Prop} from "vue-property-decorator";
 
-    @Component({
-        computed: {
-            inputListeners() {
-                let vm = this;
-                return Object.assign({},
-                    this.$listeners,
-                    {
-                        focus(event) {
-                            vm.$('focus', event)
-                        },
-                        input(event) {
-                            vm.$emit('input', event.target.value)
-                        }
-                    }
-                )
-            }
-        }
-    })
+    @Component
     export default class Test extends Vue {
-        @Prop(String) label: string;
+
+        renderChild(h) {
+            this.$slots.test = (this.$slots.default);
+        }
+
     }
 </script>

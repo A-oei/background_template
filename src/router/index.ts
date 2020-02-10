@@ -21,7 +21,7 @@ const routes = [
             {
                 path: 'iconFont',
                 name: 'iconFont',
-                component: () => import(/* webpackChunkName: "about" */ '../views/IconFont/index.vue'),
+                component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
             }
         ]
     },
