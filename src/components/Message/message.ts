@@ -21,9 +21,9 @@ let seed: number = 1,
 const Message = function (options: object | string = {}) {
 
     if (typeof options == "string") {
-        options = {
-            message: options
-        }
+            options = {
+                message: options
+            }
     }
 
     let id = 'message_' + seed++;

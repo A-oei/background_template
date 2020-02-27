@@ -4,13 +4,16 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import navigation from "./Navigation";
-
+import select from './Select';
 
 export default new Vuex.Store({
-    state: {},
+    state: {
+        layerPopVisible: false
+    },
     mutations: {},
     actions: {},
     modules: {
-        navigation
+        navigation,
+        select
     }
 })

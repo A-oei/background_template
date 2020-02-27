@@ -53,17 +53,12 @@
         columnData: object[] = [];
 
         renderTableColumn(h, vnode) {
-
-            console.log(this.$slots.tableColumnSlot, 'tableColumnSlot');
-
             this.$slots.tableColumnSlot = vnode;
         }
 
-        @Watch('$slots.tableColumnSlot', {immediate: true, deep: true})
-
-
-        created() {
-
+        mounted() {
+            // console.log(this.tableData);
+            // console.log(this.columnData,'2');
             this.$slots.default.map((item, index) => {
                 this.columnData.push({
                     prop: item.componentOptions.propsData.prop || '',
@@ -75,6 +70,7 @@
                 if (!item.componentOptions.propsData.prop) {
                     this.columnData[index]['prop'] = `operation_${index}`;
                     this.tableData.map(table => {
+                        // this.$slots.tableColumnSlot = 12;
                         table[`operation_${index}`] = item;
                     })
                 }

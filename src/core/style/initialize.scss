@@ -92,6 +92,16 @@ i, var {
   pointer-events: none;
 }
 
+//隐藏scroll边框
+.hide-scroll {
+  scrollbar-width: none; //firefox
+  -ms-overflow-style: none; //ie
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
 //公共样式
 @import "aoei-form-style";
 //字体样式

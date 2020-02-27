@@ -5,18 +5,10 @@
             <span style="{color: #67c23a;background-color: #f56c6c}">background_template平台</span>
         </div>
 
-        <!--<aoei-select v-model="selected" label="select">-->
-        <!--<AoeiOptgroup label="456">-->
-        <!--<aoei-option label="1" value="1"/>-->
-        <!--</AoeiOptgroup>-->
-        <!--<aoei-option label="2" value="2">-->
-        <!--<span>789</span>-->
-        <!--</aoei-option>-->
-        <!--<aoei-option label="3" value="3" :disabled="true"/>-->
-        <!--</aoei-select>-->
-
         <div class="top-bar-user">
             <span/>
+            <div>
+            </div>
         </div>
     </div>
 </template>
