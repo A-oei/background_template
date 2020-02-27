@@ -30,7 +30,7 @@
     import DropdownMenu from "../components/Dropdown/DropdownMenu";
     import DropdownItem from "../components/Dropdown/DropdownItem";
 
-    import testTable from "../components/Table/testIndex.vue";
+    import testTable from "../components/Table/Table.vue";
 
 
 

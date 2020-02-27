@@ -24,13 +24,13 @@ import Dialog from "@/components/Dialog/index.vue";
 import AoeiDropdown from '@/components/Dropdown/index.vue';
 
 //table
+import TestTable from "./Table/TestTable.vue";
 import AoeiTable from "./Table/Table.vue";
 import TableColumn from './Table/TableColumn.vue';
 //select
 import AoeiSelect from "./Form/SimulationSelect/Select.vue";
 import AoeiOption from './Form/SimulationSelect/Option.vue';
 
-import TestIndex from "./Table/testIndex.vue";
 
 
 
@@ -55,7 +55,7 @@ export default {
         Vue.component('AoeiOption', AoeiOption);
 
 
-        Vue.component('TestIndex', TestIndex);
+        Vue.component('TestIndex', TestTable);
     }
 }
 

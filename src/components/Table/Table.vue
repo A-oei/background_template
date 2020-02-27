@@ -1,64 +1,24 @@
-<template>
-    <table class="aoei-table">
-
-        <!--<slot v-bind:scoped="tableData"></slot>-->
-
-        <thead class="aoei-thead">
-        <tr class="thead-column">
-            <template v-for="(item) in columnData">
-                <th class="column-th"
-                    :style="{
-                    'width':item.width+'px',
-                    'textAlign':item.align
-                    }">
-                    {{item.label}}
-                </th>
-            </template>
-        </tr>
-        </thead>
-
-        <tbody class="aoei-tbody">
-        <tr v-for="(item,index) in tableData" class="tbody-column">
-            <template v-for="column in columnData">
-                <template>
-                    <td class="column-td"
-                        :class="(index&1==1)&stripe?'el-table__row--striped':''"
-                        :style="{
-                        'width':column['width']+'px',
-                        'textAlign':column['align']
-                        }">
-                        <template v-if="column['prop'].search('operation_')!=-1">
-                            <slot name="tableColumnSlot"/>
-                            {{renderTableColumn($createElement,item[column['prop']])}}
-                        </template>
-                        <template v-else>
-                            {{item[column['prop']]}}
-                        </template>
-                    </td>
-                </template>
-            </template>
-        </tr>
-        </tbody>
-    </table>
-</template>
-<script lang="ts">
-    import {Component, Vue, Prop, Watch} from "vue-property-decorator";
-
-    @Component
-    export default class AoeiTable extends Vue {
-
-        @Prop({type: Array, default: []}) tableData: object[];
-        @Prop({type: Boolean, default: false}) stripe: boolean;
-
-        columnData: object[] = [];
-
-        renderTableColumn(h, vnode) {
-            this.$slots.tableColumnSlot = vnode;
-        }
-
+<script>
+    export default {
+        name: 'testTable',
+        props: {
+            tableData: {
+                type: Array,
+                default() {
+                    return []
+                }
+            },
+            stripe: {
+                type: Boolean,
+                default: false
+            }
+        },
+        data() {
+            return {
+                columnData: []
+            }
+        },
         mounted() {
-            // console.log(this.tableData);
-            // console.log(this.columnData,'2');
             this.$slots.default.map((item, index) => {
                 this.columnData.push({
                     prop: item.componentOptions.propsData.prop || '',
@@ -75,12 +35,98 @@
                     })
                 }
             })
+        },
+        render(h) {
+            return (
+                h(
+                    'table',
+                    {
+                        'class': {
+                            'aoei-table': true
+                        }
+                    },
+                    [
+                        h(
+                            'thead',
+                            {
+                                'class': {
+                                    "aoei-thead": true
+                                }
+                            },
+                            [
+                                h('tr',
+                                    {
+                                        'class': {
+                                            'thead-column': true
+                                        },
+                                    },
+                                    this.columnData.map(item => {
+                                        return h(
+                                            'th',
+                                            {
+                                                'class': {
+                                                    'column-th': true
+                                                },
+                                                'style': {
+                                                    'width': item.width + 'px',
+                                                    'textAlign': item.align
+                                                }
+                                            },
+                                            item.label
+                                        )
+                                    })
+                                )
+                            ],
+                        ),
+                        h(
+                            'tbody',
+                            {
+                                'class': {
+                                    'aoei-tbody': true
+                                }
+                            },
+                            [
+                                this.tableData.map((item, index) => {
+                                    return h(
+                                        'tr',
+                                        {
+                                            'class': {
+                                                'tbody-column': true
+                                            }
+                                        },
+                                        [
+                                            this.columnData.map(column => {
+                                                let content = item[column['prop']];
+                                                return h(
+                                                    'td',
+                                                    {
+                                                        'class': {
+                                                            'column-td': true,
+                                                            'el-table__row--striped': (index & 1 == 1) & this.stripe
+                                                        },
+                                                        'style': {
+                                                            'width': column['width'] + 'px',
+                                                            'textAlign': column['align']
+                                                        },
+                                                        'slot': 'default'
+                                                    },
+                                                    [content]
+                                                    // {item[column['prop']]},
+                                                )
+                                            })
+                                        ]
+                                    )
+                                })
+                            ]
+                        )
+                    ]
+                )
+            )
         }
     }
 </script>
 <style lang="scss" scoped>
     .aoei-table {
-
         .aoei-thead {
             .thead-column {
                 .column-th {
@@ -112,11 +158,3 @@
         }
     }
 </style>
-<!--<script type="text/jsx">-->
-<!--export default {-->
-<!--name: '',-->
-<!--render(h) {-->
-<!--return ()-->
-<!--}-->
-<!--}-->
-<!--</script>-->
