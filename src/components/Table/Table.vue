@@ -108,10 +108,13 @@
                                                             'width': column['width'] + 'px',
                                                             'textAlign': column['align']
                                                         },
-                                                        'slot': 'default'
+                                                        'scopedSlots': {
+                                                            columnSlot: function () {
+                                                                return createElement('span',{name:'111'})
+                                                            }
+                                                        }
                                                     },
                                                     [content]
-                                                    // {item[column['prop']]},
                                                 )
                                             })
                                         ]

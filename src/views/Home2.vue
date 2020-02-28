@@ -8,22 +8,11 @@
                     <button @click="clickBtn">1</button>
                 </template>
             </TableColumn>
-            <TableColumn label="操作2" width="400">
-                <template #columnSlot>
-                    <button @click="clickBtn">2</button>
+            <TableColumn label="操作2" width="400"  #columnSlot='columnSlot'>
+                <template>
+                    <button @click="clickBtn1(columnSlot)">2</button>
                 </template>
             </TableColumn>
-            <TableColumn label="操作3" width="400">
-                <template #columnSlot>
-                    <button @click="clickBtn">3</button>
-                </template>
-            </TableColumn>
-            <TableColumn label="操作4" width="400">
-                <template #columnSlot>
-                    <button @click="clickBtn">4</button>
-                </template>
-            </TableColumn>
-            <TableColumn prop="address" label="地址" width="250"></TableColumn>
         </AoeiTable>
     </div>
 </template>
@@ -35,7 +24,12 @@
         testText: string = '';
 
         clickBtn() {
-            alert(12)
+            alert(1)
+        }
+
+        clickBtn1(columnSlot){
+            console.log(columnSlot);
+            alert(2)
         }
 
         tableData: object[] = [
