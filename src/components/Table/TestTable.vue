@@ -8,9 +8,11 @@
         },
         render(h) {
             return (
-                <div>
-
-                </div>
+                <table class="aoei-table">
+                    <thead class="aoei-thead">
+                    
+                    </thead>
+                </table>
             )
         }
     }
