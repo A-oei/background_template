@@ -67,7 +67,7 @@
     }
 
     .aoei-button {
-        display: flex;
+        display: inline-block;
         align-items: center;
         justify-content: center;
         white-space: nowrap;
@@ -177,8 +177,7 @@
         border-color: transparent;
         color: #409eff;
         background-color: transparent;
-        padding-left: 0;
-        padding-right: 0;
+        padding: 9px 0;
         &:hover {
             color: #66b1ff;
             border-color: transparent;

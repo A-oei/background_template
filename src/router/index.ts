@@ -1,16 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import RoleChange from "../views/SaaS/RoleChange.vue";
+import Home from "../views/Home.vue";
+
+
 Vue.use(VueRouter)
 
 const routes = [
     {
         path: '/',
-        component: () => import('../views/Home.vue'),
+        component: Home,
         children: [
             {
+                path: '/saaSRoleManagement',
+                name: 'saaSRoleManagement',
+                component: () => import('../views/SaaS/SaasRoleManagement.vue')
+            },
+            {
                 path: '/home1/',
-                name: 'about',
+                name: 'home1',
                 component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
             },
             {
@@ -22,6 +31,15 @@ const routes = [
                 path: 'iconFont',
                 name: 'iconFont',
                 component: () => import(/* webpackChunkName: "about" */ '../views/IconFont/index.vue'),
+            },
+            {
+                path: '/saasPop',
+                name: 'saasPop',
+                component: RoleChange,
+                meta: {
+                    title: '修改角色',
+                    isModal: true
+                }
             }
         ]
     },
@@ -35,8 +53,10 @@ const routes = [
     }
 ]
 
+export {routes}
+
 const router = new VueRouter({
-    mode: 'history',
+    // mode: 'history',
     base: process.env.BASE_URL,
     routes
 })

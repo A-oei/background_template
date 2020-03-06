@@ -5,9 +5,6 @@
  */
 //消息提示
 import Message from "@/components/Message/message";
-//遮罩层
-import DialogWrapper from "@/components/Dialog/LayerPop";
-
 
 import AoeiButton from "./Button/index.vue";
 
@@ -23,6 +20,18 @@ import Dialog from "@/components/Dialog/index.vue";
 
 import AoeiDropdown from '@/components/Dropdown/index.vue';
 
+import AoeiCard from "@/components/Card/index.vue";
+
+import ModalPage from "@/components/ModalPage/index.vue";
+
+import AoeiPagination from "@/components/Pagination/index.vue";
+
+
+//dropdown
+import Dropdown from "./Dropdown/index.vue";
+import DropdownMenu from "./Dropdown/DropdownMenu.vue";
+import DropdownItem from "./Dropdown/DropdownItem.vue";
+
 //table
 import TestTable from "./Table/TestTable.vue";
 import AoeiTable from "./Table/Table.vue";
@@ -32,12 +41,9 @@ import AoeiSelect from "./Form/SimulationSelect/Select.vue";
 import AoeiOption from './Form/SimulationSelect/Option.vue';
 
 
-
-
 export default {
     install(Vue: any, options: any) {
         Vue.prototype.$message = Message;
-        Vue.prototype.$layerPop = DialogWrapper;
 
         Vue.component('AoeiButton', AoeiButton);
         Vue.component('AoeiForm', AoeiForm);
@@ -46,6 +52,9 @@ export default {
         Vue.component('AoeiSidebar', AoeiSidebar);
         Vue.component('AoeiDropdown', AoeiDropdown);
         Vue.component('Dialog', Dialog);
+        Vue.component('AoeiCard', AoeiCard);
+        Vue.component('ModalPage', ModalPage);
+        Vue.component('AoeiPagination', AoeiPagination);
 
         //table
         Vue.component('AoeiTable', AoeiTable);
@@ -53,7 +62,10 @@ export default {
         //select
         Vue.component('AoeiSelect', AoeiSelect);
         Vue.component('AoeiOption', AoeiOption);
-
+        //dropdown
+        Vue.component('AoeiDropdown', Dropdown);
+        Vue.component('AoeiDropdownMenu', DropdownMenu);
+        Vue.component('AoeiDropdownItem', DropdownItem);
 
         Vue.component('TestIndex', TestTable);
     }

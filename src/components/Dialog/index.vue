@@ -1,22 +1,25 @@
 <template>
-    <div class="aoei-dialog"
-         :style="{
+    <div class="layer-pop" v-show="visible">
+        <div class="aoei-dialog"
+             :style="{
             width ,
             display:visible?'block':'none'
          }"
-         ref="AoeiDialog"
-    >
-        <div class="el-dialog__header">
-            <span>{{title}}</span>
-            <i @click="dialogClose">关闭</i>
-        </div>
-        <div class="el-dialog__body">
-            <slot></slot>
-        </div>
-        <div class="el-dialog__footer">
-            <slot name="footer"></slot>
+             ref="AoeiDialog"
+        >
+            <div class="el-dialog__header">
+                <span>{{title}}</span>
+                <i @click="dialogClose">关闭</i>
+            </div>
+            <div class="el-dialog__body">
+                <slot></slot>
+            </div>
+            <div class="el-dialog__footer">
+                <slot name="footer"></slot>
+            </div>
         </div>
     </div>
+
 </template>
 <script lang="ts">
     import {Component, Vue, Prop, Watch, Ref} from "vue-property-decorator";
@@ -30,17 +33,25 @@
 
         dialogClose() {
             this.$emit('update:visible', false)
-            this.$layerPop(false)
         }
 
-        @Watch('visible', {deep: false, immediate: false})
-        onVisibleChange(n: boolean, o: boolean) {
-            this.$layerPop(n)
+        @Watch('visible')
+        onVisibleChange(val){
+            console.log(val,'val')
         }
     }
 </script>
 <style lang="scss">
     @import "../../core/style/public";
+
+    .layer-pop{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.3);
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
 
     .aoei-dialog {
         position: relative;

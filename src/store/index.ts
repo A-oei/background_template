@@ -5,6 +5,8 @@ Vue.use(Vuex)
 
 import navigation from "./Navigation";
 import select from './Select';
+import modal from "./ModalPage";
+
 
 export default new Vuex.Store({
     state: {
@@ -14,6 +16,7 @@ export default new Vuex.Store({
     actions: {},
     modules: {
         navigation,
-        select
+        select,
+        modal
     }
 })

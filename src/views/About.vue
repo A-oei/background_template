@@ -6,12 +6,6 @@
             <AoeiOption label="第二个" value="2"/>
         </AoeiSelect>
 
-        <AoeiDropdown>
-            <span>下拉菜单</span>
-            <DropdownMenu #dropdown>
-                <li>555</li>
-            </DropdownMenu>
-        </AoeiDropdown>
 
         <Dialog title="提示" :visible.sync="dialogVisible">
             <span>这是一段信息</span>
@@ -23,23 +17,24 @@
 
         <div @click="click">触发dialog</div>
 
-        <testTable></testTable>
+        <AoeiDropdown style="margin-top: 50px;margin-left: 200px" @command="handleCommand">
+            <span>下拉菜单</span>
+            <AoeiDropdownMenu slot="dropdown">
+                <AoeiDropdownItem command="1" divided>黄金</AoeiDropdownItem>
+                <AoeiDropdownItem command="2" disabled>黄金</AoeiDropdownItem>
+                <AoeiDropdownItem command="3">黄金</AoeiDropdownItem>
+            </AoeiDropdownMenu>
+        </AoeiDropdown>
+
+
+
     </div>
 </template>
 <script>
-    import DropdownMenu from "../components/Dropdown/DropdownMenu";
-    import DropdownItem from "../components/Dropdown/DropdownItem";
-
-    import testTable from "../components/Table/Table.vue";
-
 
 
     export default {
-        components: {
-            DropdownMenu,
-            DropdownItem,
-            testTable
-        },
+        components: {},
 
         data() {
             return {
@@ -50,6 +45,9 @@
         methods: {
             click() {
                 this.dialogVisible = true;
+            },
+            handleCommand(i) {
+                console.log(i, 'i');
             }
         }
 

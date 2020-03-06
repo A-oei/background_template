@@ -6,10 +6,34 @@
         </div>
 
         <div class="top-bar-user">
-            <span/>
-            <div>
-            </div>
+            <span class="user-header"/>
+            <aoei-dropdown class="user-options" @command="userOperation">
+                <div class="user-name">
+                    <span>admin</span>
+                    <span class="icon iconfont aoei-icon-test69"></span>
+                </div>
+                <aoei-dropdown-menu slot="dropdown">
+                    <span class="user-welcome">欢迎使用</span>
+                    <aoei-dropdown-item class="options-change-password" command="change">
+                        <span class="icon iconfont aoei-icon-test13"/>
+                        <span>修改密码</span>
+                    </aoei-dropdown-item>
+                    <aoei-dropdown-item class="options-out" command="out">
+                        <span class="icon iconfont aoei-icon-test42"/>
+                        <span>退出</span>
+                    </aoei-dropdown-item>
+                </aoei-dropdown-menu>
+            </aoei-dropdown>
         </div>
+
+        <!--退出弹窗-->
+        <Dialog title="提示" :visible.sync="dialogVisible">
+            <span>您确定要退出吗?</span>
+            <div slot="footer" class="dialog-footer">
+                <aoei-button @click="dialogVisible = false">取 消</aoei-button>
+                <aoei-button @click="dialogVisible = false" type="primary" style="margin-left: 30px">确 定</aoei-button>
+            </div>
+        </Dialog>
     </div>
 </template>
 <script lang="ts">
@@ -18,6 +42,16 @@
     @Component({})
     export default class TopBar extends Vue {
 
+        dialogVisible: boolean = false;
+
+        userOperation(e) {
+            if (e == 'out') {
+                this.dialogVisible = true;
+                window.localStorage.removeItem('aoei-token');
+                this.$router.replace('/login');
+                this.$message({message: '退出成功', type: 'success'});
+            }
+        }
     }
 </script>
 <style lang="scss" scoped>
@@ -50,18 +84,40 @@
             border-left: .5px solid rgba(0, 0, 0, .2);
             display: flex;
             align-items: center;
-            span {
-                &:nth-of-type(1) {
-                    width: 30px;
-                    height: 30px;
-                    background: url("../../../assets/images/top-bar-userIcon.png") no-repeat;
-                    background-size: cover;
-                    margin-left: 20px;
-                }
-                &:nth-of-type(2) {
-                    padding-left: 10px;
-                }
+            .user-header {
+                width: 30px;
+                height: 30px;
+                background: url("../../../assets/images/top-bar-userIcon.png") no-repeat;
+                background-size: cover;
+                margin-left: 20px;
+            }
+            .user-options {
+                margin: 0 10px 0 15px;
+                &::v-deep {
+                    .user-name {
+                        display: flex;
+                        align-items: center;
+                        span:nth-of-type(1) {
+                            font-size: 10px;
+                        }
+                    }
+                    .user-welcome {
+                        line-height: 30px;
+                        padding-left: 20px;
+                        font-size: 12px;
+                        color: #718295;
+                    }
+                    .options-change-password, .options-out {
+                        text-align: left !important;
+                        span {
+                            color: #161b22;
+                            &:nth-of-type(1) {
+                                margin-right: 5px;
+                            }
+                        }
+                    }
 
+                }
             }
         }
     }

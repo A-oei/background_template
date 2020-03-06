@@ -49,7 +49,10 @@
                 if (valid) {
                     services.login({username: this.username, password: this.password})
                         .then(res => {
+                            console.log(res, 'res');
+                            window.localStorage.setItem('aoei-token', res.accessToken);
                             this.$message({message: '登录成功', type: 'success'});
+                            this.$router.push('/home1')
                         })
                         .catch(err => {
                             this.$message({message: '登录失败', type: 'error'});

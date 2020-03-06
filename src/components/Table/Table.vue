@@ -1,6 +1,6 @@
 <script>
     export default {
-        name: 'testTable',
+        name: 'Table',
         props: {
             tableData: {
                 type: Array,
@@ -8,6 +8,7 @@
                     return []
                 }
             },
+            //是否为斑马纹
             stripe: {
                 type: Boolean,
                 default: false
@@ -15,26 +16,47 @@
         },
         data() {
             return {
-                columnData: []
+                columnData: [],
+                tableItemData: []
             }
         },
-        mounted() {
-            this.$slots.default.map((item, index) => {
-                this.columnData.push({
-                    prop: item.componentOptions.propsData.prop || '',
-                    label: item.componentOptions.propsData.label,
-                    width: item.componentOptions.propsData.width,
-                    align: item.componentOptions.propsData.align,
+        methods: {
+            transformationData() {
+                this.$slots.default.map((item, index) => {
+                    this.columnData.push({
+                        prop: item.componentOptions.propsData.prop || '',
+                        label: item.componentOptions.propsData.label,
+                        width: item.componentOptions.propsData.width,
+                        align: item.componentOptions.propsData.align,
+                    })
+
+                    if (!item.componentOptions.propsData.prop) {
+                        this.columnData[index]['prop'] = `operation_${index}`;
+                        this.tableData.map(table => {
+                            table[`operation_${index}`] = item;
+                        })
+                    }
                 })
 
-                if (!item.componentOptions.propsData.prop) {
-                    this.columnData[index]['prop'] = `operation_${index}`;
-                    this.tableData.map(table => {
-                        // this.$slots.tableColumnSlot = 12;
-                        table[`operation_${index}`] = item;
+            }
+        },
+        watch: {
+            tableData: {
+                handler(n, o) {
+                    this.tableItemData = [];
+                    this.tableData.map((item, index) => {
+                        let obj = {};
+                        for (let key in  item) {
+                            if (key.search('operation_') == -1) {
+                                obj[key] = item[key];
+                            }
+                        }
+                        this.tableItemData.push({row: obj, index});
                     })
-                }
-            })
+                    this.transformationData();
+                },
+                deep: true
+            }
         },
         render(h) {
             return (
@@ -91,12 +113,17 @@
                                         'tr',
                                         {
                                             'class': {
-                                                'tbody-column': true
+                                                'tbody-column': true,
+                                                'tbody-colum-stripe': this.stripe
                                             }
                                         },
                                         [
                                             this.columnData.map(column => {
-                                                let content = item[column['prop']];
+
+                                                let content = item[column['prop']],
+                                                    scope = this.tableItemData[index];
+                                                let scopeStringify = JSON.stringify(scope);
+
                                                 return h(
                                                     'td',
                                                     {
@@ -108,10 +135,8 @@
                                                             'width': column['width'] + 'px',
                                                             'textAlign': column['align']
                                                         },
-                                                        'scopedSlots': {
-                                                            columnSlot: function () {
-                                                                return createElement('span',{name:'111'})
-                                                            }
+                                                        'attrs': {
+                                                            scope: scopeStringify
                                                         }
                                                     },
                                                     [content]
@@ -130,6 +155,7 @@
 </script>
 <style lang="scss" scoped>
     .aoei-table {
+        border-collapse: collapse;
         .aoei-thead {
             .thead-column {
                 .column-th {
@@ -137,6 +163,8 @@
                     font-size: 14px;
                     font-weight: bold;
                     text-align: left;
+                    width: 200px;
+                    padding-bottom: 15px;
                 }
             }
         }
@@ -145,9 +173,10 @@
             .tbody-column {
                 &:hover > td {
                     background-color: #f5f7fa;
+                    border-color: #f5f7fa;
                 }
                 .column-td {
-                    padding: 10px 0;
+                    padding: 8px 3px;
                     height: 24px;
                     line-height: 24px;
                     color: #606266;
@@ -156,6 +185,12 @@
                 }
                 .el-table__row--striped {
                     background-color: #fafafa;
+                }
+            }
+            .tbody-colum-stripe {
+                &:nth-of-type(2n) {
+                    background-color: #fafafa;
+                    border-bottom: 1px solid #ebeef5;
                 }
             }
         }

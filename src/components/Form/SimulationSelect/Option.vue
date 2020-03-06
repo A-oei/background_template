@@ -11,7 +11,7 @@
 
         @Prop({type: [String, Number], default: ''}) value: string | number;
         @Prop({type: [String, Number], default: ''}) label: string | number;
-        @Prop({type: [String], default: '1'}) label: string;
+        @Prop({type: [String, Number], default: '1'}) label: string | number;
 
         @Inject() readonly select: any;
 

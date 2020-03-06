@@ -30,7 +30,7 @@
     @Component
     export default class FormSelect extends Vue {
 
-        @Model('change', {type: String}) selectValue!: string;
+        @Model('change', {type: [Number, String]}) selectValue!: number | string;
 
         @Prop({type: String, default: ''}) label: string;
         @Prop({type: String, default: ''}) placeholder: string;

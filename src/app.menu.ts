@@ -1,8 +1,12 @@
 const Menu = [
     {
-        title: '首页',
+        title: 'SaaS服务',
         icon: 'aoei-icon-test40',
         children: [
+            {
+                title: '角色管理',
+                index: 'saaSRoleManagement'
+            },
             {
                 title: 'home1',
                 index: 'home1'

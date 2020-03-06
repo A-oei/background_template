@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from '@/core/utils/routerInterceptor.ts'
 import store from './store'
 
 //导入通配scss

@@ -11,6 +11,8 @@
                             <router-view></router-view>
                         </div>
                     </div>
+
+                    <modal-page></modal-page>
                 </div>
             )
         }

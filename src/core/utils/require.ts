@@ -10,6 +10,7 @@ import main from "./public";
 import qs from "qs";
 import {Method} from './type/index';
 import {httpCode} from "./enum/index";
+import {Intercepotors} from '@/core/utils/interface'
 
 let baseConfig: object = {
     baseURL: '',
@@ -20,18 +21,12 @@ let baseConfig: object = {
     }
 }
 
-interface Intercepotors {
-    requestSuccess: object,
-    requestError: object,
-    responseSuccess: object,
-    responseError: object
-}
 
 const intercepotors: Intercepotors = {
     requestSuccess(config: any) {
-        let token = window.localStorage.getItem('token');
+        let token = window.localStorage.getItem('aoei-token');
         if (token) {
-            config['tokem'] = token;
+            config.headers['Token'] = token;
         }
         return config;
     },
