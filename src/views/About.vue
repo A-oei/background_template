@@ -26,7 +26,8 @@
             </AoeiDropdownMenu>
         </AoeiDropdown>
 
-
+        <p>日期</p>
+        <AoeiDatePicker></AoeiDatePicker>
 
     </div>
 </template>

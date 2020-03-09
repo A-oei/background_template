@@ -9,7 +9,8 @@
             class="aoei-button"
             :class="{
                 [type]:type,
-                'is-disabled':disabled
+                'is-disabled':disabled,
+                'text-not-selected': true
             }"
             :disabled="disabled"
             v-on="buttonListeners">
@@ -53,7 +54,6 @@
         @Prop(String) type: string;
         @Prop({type: Boolean, default: false}) loading: boolean;
         @Prop({type: [Boolean, String], default: false}) disabled: string | boolean;
-
 
     }
 

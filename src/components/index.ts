@@ -26,6 +26,8 @@ import ModalPage from "@/components/ModalPage/index.vue";
 
 import AoeiPagination from "@/components/Pagination/index.vue";
 
+import AoeiDatePicker from "@/components/DatePicker/index.vue";
+
 
 //dropdown
 import Dropdown from "./Dropdown/index.vue";
@@ -55,6 +57,7 @@ export default {
         Vue.component('AoeiCard', AoeiCard);
         Vue.component('ModalPage', ModalPage);
         Vue.component('AoeiPagination', AoeiPagination);
+        Vue.component('AoeiDatePicker', AoeiDatePicker);
 
         //table
         Vue.component('AoeiTable', AoeiTable);

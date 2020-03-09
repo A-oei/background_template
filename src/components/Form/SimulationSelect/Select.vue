@@ -1,8 +1,8 @@
 <template>
-    <div class="aoei-select">
+    <div class="aoei-select" ref="aoeiSelect">
         <div class="aoei-input" @click="dropdownOpen=!dropdownOpen">
             <label>{{label}}</label>
-            <div class="aoei-input-wrap">
+            <div class="aoei-input-wrap text-not-selected">
                 <input type="text"
                        :placeholder="placeholder"
                        :value="selectValue"
@@ -16,7 +16,8 @@
              :style="{
              display:dropdownOpen?'block':'none',
              border:dropdownOpen?'1px solid $borderColor':'none',
-             boxShadow:dropdownOpen?'0 2px 12px 0 rgba(0, 0, 0, .1)':'none'
+             boxShadow:dropdownOpen?'0 2px 12px 0 rgba(0, 0, 0, .1)':'none',
+             top:optionsListsTop
              }">
             <ul class="el-select-dropdown__list">
                 <slot/>
@@ -39,7 +40,7 @@
 
         dropdownOpen: boolean = false;
         selectLabel: string = '';
-
+        optionsListsTop: string = '';
         slotsAarray: Array = [];
 
         input(e, l) {
@@ -48,8 +49,11 @@
             this.dropdownOpen = false;
         }
 
-        created() {
+        mounted() {
+            this.optionsListsTop = this.$refs.aoeiSelect.offsetHeight + 10 + 'px';
+        }
 
+        created() {
             this.$slots.default.map(item => {
                 this.slotsAarray.push(item.componentOptions.propsData)
             })
@@ -109,7 +113,6 @@
             transition: height .3s;
             position: absolute;
             max-height: 274px;
-            top: 46px;
             left: 0;
             z-index: 2095;
             overflow-y: auto;

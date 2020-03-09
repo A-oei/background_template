@@ -11,7 +11,6 @@
 <script lang="ts">
     import {Component, Vue, Provide} from 'vue-property-decorator';
 
-
     @Component
     export default class Dropdown extends Vue {
         menuShow: boolean = false;
@@ -22,8 +21,6 @@
             this.menuShow = isShow;
             this.$emit('command', command);
         }
-
-
     }
 </script>
 <style lang="scss">

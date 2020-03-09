@@ -8,12 +8,12 @@
                 <TableColumn prop="creator" label="创建人"/>
                 <TableColumn label="操作2" width="400">
                     <template slot-scope="scope">
-                        <aoei-button type="text" @click="change(scope)">修改</aoei-button>
+                        <aoei-button type="text" @click="change(scope)" style="margin-right: 8px">修改</aoei-button>
                         <aoei-button type="text">删除</aoei-button>
                     </template>
                 </TableColumn>
             </AoeiTable>
-            <AoeiPagination :total="500"/>
+            <AoeiPagination :total="500" style="margin-top: 12px"/>
         </aoei-card>
     </div>
 </template>
@@ -45,4 +45,3 @@
     }
 
 </script>
-<style lang="scss" scoped></style>

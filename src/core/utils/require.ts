@@ -6,7 +6,7 @@
 
 
 import axios from "axios";
-import main from "./public";
+import {TypeJudgment} from "./public";
 import qs from "qs";
 import {Method} from './type/index';
 import {httpCode} from "./enum/index";
@@ -86,7 +86,7 @@ let http = (ajax: any, url: string, method: Method, params: Params, isFormData: 
 
     let data: Params = {...params};
 
-    if (method == 'get' && data && main.TypeJudgment(data) == 'object') {
+    if (method == 'get' && data && TypeJudgment(data) == 'object') {
         for (let item in data) {
             (data[item] === '' || data[item] === undefined || data[item] === null) && (delete data[item])
         }
@@ -95,7 +95,7 @@ let http = (ajax: any, url: string, method: Method, params: Params, isFormData: 
 
     try {
         Object.keys(data).map(item => {
-            if (params[item] && main.TypeJudgment(data) == 'string') params[item] = params[item].trim();
+            if (params[item] && TypeJudgment(data) == 'string') params[item] = params[item].trim();
         })
     }
     catch (e) {

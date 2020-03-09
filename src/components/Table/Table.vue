@@ -72,7 +72,8 @@
                             'thead',
                             {
                                 'class': {
-                                    "aoei-thead": true
+                                    "aoei-thead": true,
+                                    'text-not-selected': true
                                 }
                             },
                             [
@@ -176,11 +177,12 @@
                     border-color: #f5f7fa;
                 }
                 .column-td {
-                    padding: 8px 3px;
-                    height: 24px;
-                    line-height: 24px;
+                    padding: 8px 5px;
+                    height: 18px;
+                    line-height: 18px;
+                    box-sizing: border-box;
                     color: #606266;
-                    font-size: 14px;
+                    font-size: 12px;
                     background-color: #ffffff;
                 }
                 .el-table__row--striped {

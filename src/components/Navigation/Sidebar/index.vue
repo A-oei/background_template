@@ -1,5 +1,5 @@
 <template>
-    <ul class="el-menu-wrap"
+    <ul class="el-menu-wrap text-not-selected"
         :class="collapse?'is-collapse':''"
         :style="{
         'backgroundColor':backgroundColor,
