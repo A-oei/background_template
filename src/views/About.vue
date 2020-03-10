@@ -3,9 +3,9 @@
         <AoeiSelect v-model="tert">
             <AoeiOption label="第一个" value="1"/>
             <AoeiOption label="第二个" value="2"/>
-            <AoeiOption label="第二个" value="2"/>
+            <AoeiOption label="第三个" value="3"/>
         </AoeiSelect>
-
+        <p>{{tert}}</p>
 
         <Dialog title="提示" :visible.sync="dialogVisible">
             <span>这是一段信息</span>
@@ -27,8 +27,8 @@
         </AoeiDropdown>
 
         <p>日期</p>
-        <AoeiDatePicker></AoeiDatePicker>
-
+        <AoeiDatePicker v-model="adatee"></AoeiDatePicker>
+        <p>{{adatee}}</p>
     </div>
 </template>
 <script>
@@ -40,7 +40,8 @@
         data() {
             return {
                 tert: '1',
-                dialogVisible: false
+                dialogVisible: false,
+                adatee:'555'
             }
         },
         methods: {

@@ -1,5 +1,8 @@
 <template>
     <div class="saas-role-management">
+        <aoei-card style="padding: 5px 20px;margin-bottom: 15px;">
+            <AoeiDatePicker v-model="time"/>
+        </aoei-card>
         <aoei-card>
             <AoeiTable :tableData="tableData" stripe>
                 <TableColumn prop="name" width="200" label="角色名称"/>
@@ -25,12 +28,12 @@
     export default class SaasRoleManagement extends Vue {
 
         tableData: object[] = [];
+        time: number | string = '';
 
         change(scope) {
             console.log(scope.scope);
             this.$router.push('saasPop')
         }
-
 
         inquireLists() {
             services.get_list({pageIndex: 1, pageNumber: 10})

@@ -8,7 +8,7 @@
         },
         methods: {
             generateIconLists() {
-                for (let i = 2; i < 84; i++) {
+                for (let i = 2; i <= 90; i++) {
                     this.iconLists.push(i);
                 }
             }
