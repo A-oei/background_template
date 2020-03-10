@@ -1,6 +1,6 @@
 ## background_template 项目
 
-项目模仿[element-ui](https://element.eleme.cn/#/zh-CN/component/installation)实现了一些常用的插件，样式基本参考了`element`框架，实现了部分常用的功能
+项目采用`vue`+`typescript`，模仿[element-ui](https://element.eleme.cn/#/zh-CN/component/installation)实现了一些常用的插件，样式基本参考了`element`框架，实现了部分常用的功能
 
 * `input`输入框
 * `Message`消息提示
