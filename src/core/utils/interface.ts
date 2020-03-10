@@ -24,7 +24,24 @@ interface Intercepotors {
     responseError: object
 }
 
+interface VueComponent {
+    $attrs?: object,
+    $listeners?: object,
+    _uid?: number,
+    _isVue?: boolean,
+    $options?: object,
+    _renderProxy?: object,
+    _self?: object,
+    $parent?: object,
+    $root?: object,
+    $children?: object[],
+    $refs?: object,
+
+    [params: string]: any
+}
+
 export {
     RouterObject,
-    Intercepotors
+    Intercepotors,
+    VueComponent
 }

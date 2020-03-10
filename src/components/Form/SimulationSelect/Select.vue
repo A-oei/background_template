@@ -84,6 +84,7 @@
                 > input {
                     display: none;
                 }
+
                 > div {
                     width: 100%;
                     height: 40px;
@@ -96,6 +97,7 @@
                     line-height: 40px;
                     cursor: pointer;
                 }
+
                 > span {
                     height: 100%;
                     line-height: 40px;
@@ -119,6 +121,7 @@
             border-radius: 4px;
             background-color: #fff;
             margin: 5px 0;
+
             .el-select-dropdown__list {
                 cursor: pointer;
                 width: 100%;
