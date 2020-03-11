@@ -31,7 +31,9 @@
             <span>您确定要退出吗?</span>
             <div slot="footer" class="dialog-footer">
                 <aoei-button @click="dialogVisible = false">取 消</aoei-button>
-                <aoei-button @click="dialogVisible = false" type="primary" style="margin-left: 30px">确 定</aoei-button>
+                <aoei-button @click="loginOut" type="primary" style="margin-left: 30px">
+                    确定
+                </aoei-button>
             </div>
         </Dialog>
     </div>
@@ -47,10 +49,13 @@
         userOperation(e) {
             if (e == 'out') {
                 this.dialogVisible = true;
-                window.localStorage.removeItem('aoei-token');
-                this.$router.replace('/login');
-                this.$message({message: '退出成功', type: 'success'});
             }
+        }
+
+        loginOut() {
+            this.dialogVisible = false;
+            window.localStorage.removeItem('aoei-token');
+            this.$router.replace('/login');
         }
     }
 </script>

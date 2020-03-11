@@ -1,23 +1,24 @@
 <template>
     <div class="aoei-select" ref="aoeiSelect">
-        <div class="aoei-input" @click="dropdownOpen=!dropdownOpen">
-            <label>{{label}}</label>
-            <div class="aoei-input-wrap text-not-selected">
-                <input type="text"
-                       :placeholder="placeholder"
-                       :value="selectValue"
-                       @change="input"
-                >
-                <div>{{selectLabel}}</div>
-                <span class="icon iconfont" :class="dropdownOpen?'aoei-icon-test58':'aoei-icon-test60'"/>
+        <div class="input-wrap">
+            <div v-show="label" class="input-wrap-label">{{label}}</div>
+            <div class="aoei-input" @click="dropdownOpen=!dropdownOpen">
+                <div class="aoei-input-wrap text-not-selected">
+                    <input type="text"
+                           :placeholder="placeholder"
+                           :value="selectValue"
+                           @change="input"
+                    >
+                    <div>{{selectLabel}}</div>
+                    <span class="icon iconfont" :class="dropdownOpen?'aoei-icon-test58':'aoei-icon-test60'"/>
+                </div>
             </div>
         </div>
         <div class="aoei-select-dropdown hide-scroll"
              :style="{
              display:dropdownOpen?'block':'none',
              border:dropdownOpen?'1px solid $borderColor':'none',
-             boxShadow:dropdownOpen?'0 2px 12px 0 rgba(0, 0, 0, .1)':'none',
-             top:optionsListsTop
+             boxShadow:dropdownOpen?'0 2px 12px 0 rgba(0, 0, 0, .1)':'none'
              }">
             <ul class="el-select-dropdown__list">
                 <slot/>
@@ -50,6 +51,7 @@
         }
 
         mounted() {
+            console.log(this.$refs.aoeiSelect.offsetHeight, '555');
             this.optionsListsTop = this.$refs.aoeiSelect.offsetHeight + 10 + 'px';
         }
 
@@ -69,12 +71,21 @@
     @import "../../../core/style/public";
 
     .aoei-select {
-        width: 240px;
         position: relative;
+        .input-wrap {
+            display: flex;
+            align-items: center;
+
+            .input-wrap-label {
+                margin-right: 15px;
+                color: #606266;
+                line-height: 40px;
+            }
+        }
 
         .aoei-input {
+            width: px;
             font-size: 14px;
-            width: 100%;
 
             .aoei-input-wrap {
                 width: 100%;
@@ -114,6 +125,7 @@
             min-width: 240px;
             transition: height .3s;
             position: absolute;
+            top: 42px;
             max-height: 274px;
             left: 0;
             z-index: 2095;

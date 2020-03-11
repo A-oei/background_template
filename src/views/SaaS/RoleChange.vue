@@ -1,15 +1,14 @@
 <template>
     <Dialog :title='title' :visible.sync="dialogVisible">
         <div>
-            <form-input v-model="roleName" label="角色名称"/>
+            <form-input v-model="roleName" label="角色名称" placeholder="请输入角色名称"/>
 
-            <AoeiSelect v-model="role" label="角色类型">
+            <AoeiSelect v-model="role" label="角色类型" style="margin-top: 15px">
                 <AoeiOption label="系统用户" value="0"/>
                 <AoeiOption label="系统管理员" value="1"/>
                 <AoeiOption label="租户用户" value="2"/>
                 <AoeiOption label="渠道用户" value="3"/>
             </AoeiSelect>
-
 
         </div>
         <div slot="footer" class="dialog-footer">

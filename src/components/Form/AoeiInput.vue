@@ -8,7 +8,6 @@
         <label v-if="label">{{label}}</label>
         <div class="form-input-wrap">
             <slot name="formIcon"/>
-
             <input
                     v-validator="validatorFn"
                     :type="type"
@@ -70,20 +69,22 @@
     @import "../../core/style/public";
 
     .aoei-form-input {
+        display: flex;
+        align-items: center;
         .form-input-wrap {
             position: relative;
             height: 100%;
             > input {
-                 border-radius: 4px;
-                 background-color: #fff;
-                 border: 1px solid $borderColor;
-                 height: 100%;
-                 padding: 0 15px;
-                 width: 100%;
-                 &:focus {
-                     border: 1px solid $focusColor;
-                 }
-             }
+                border-radius: 4px;
+                background-color: #fff;
+                border: 1px solid $borderColor;
+                height: 100%;
+                padding: 0 15px;
+                width: 100%;
+                &:focus {
+                    border: 1px solid $focusColor;
+                }
+            }
         }
         .aoei-moon-error {
             width: 100%;

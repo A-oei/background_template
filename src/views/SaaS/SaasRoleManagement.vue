@@ -13,7 +13,7 @@
                 <TableColumn prop="creator" label="创建人"/>
                 <TableColumn label="操作" width="400">
                     <template slot-scope="scope">
-                        <aoei-button type="text" @click="roleEdit(scope)" style="margin-right: 8px">修改</aoei-button>
+                        <aoei-button type="text" @click="roleEdit(scope)" style="margin-right: 8px">编辑</aoei-button>
                         <aoei-button type="text">删除</aoei-button>
                     </template>
                 </TableColumn>

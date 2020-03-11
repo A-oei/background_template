@@ -11,10 +11,6 @@ const Menu = [
                 title: 'home1',
                 index: 'home1'
             },
-            {
-                title: 'home2',
-                index: 'home2'
-            }
         ]
     },
     {
