@@ -14,3 +14,12 @@
 * `Select`选择器
 * `Pagination`分页器
 
+下载项目后依次执行以下命令可以查看效果
+
+```
+npm install
+npm run serve
+```
+
+
+
