@@ -11,17 +11,18 @@ const routes = [
     {
         path: '/',
         component: Home,
+        redirect:'/saaSRoleManagement',
         children: [
             {
                 path: '/saaSRoleManagement',
                 name: 'saaSRoleManagement',
                 component: () => import('../views/SaaS/SaasRoleManagement.vue')
             },
-            {
-                path: '/home1/',
-                name: 'home1',
-                component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-            },
+            // {
+            //     path: '/home1/',
+            //     name: 'home1',
+            //     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+            // },
             {
                 path: 'iconFont',
                 name: 'iconFont',

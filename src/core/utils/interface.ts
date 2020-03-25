@@ -40,8 +40,24 @@ interface VueComponent {
     [params: string]: any
 }
 
+//http请求错误信息
+interface RequestErrorInfo {
+    code: number | string,
+    message: number | string,
+    data?: any
+}
+//http请求正确信息
+interface RequestSuccessInfo {
+    username:string,
+    password:string,
+    token:string
+}
+
+
 export {
     RouterObject,
     Intercepotors,
-    VueComponent
+    VueComponent,
+    RequestErrorInfo,
+    RequestSuccessInfo
 }

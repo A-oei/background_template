@@ -45,6 +45,7 @@ const intercepotors: Intercepotors = {
 }
 
 function DataProviders(res: { [data: string]: any }) {
+    console.log(res,'res');
     let rdata = res.data;
     if (rdata.code == httpCode.success) {
         return Promise.resolve(rdata.data);

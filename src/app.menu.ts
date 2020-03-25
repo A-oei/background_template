@@ -7,10 +7,10 @@ const Menu = [
                 title: '角色管理',
                 index: 'saaSRoleManagement'
             },
-            {
-                title: 'home1',
-                index: 'home1'
-            },
+            // {
+            //     title: 'home1',
+            //     index: 'home1'
+            // },
         ]
     },
     {

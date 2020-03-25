@@ -6,6 +6,7 @@ Vue.use(Vuex)
 import navigation from "./Navigation";
 import select from './Select';
 import modal from "./ModalPage";
+import user from "./UserInfo";
 
 
 export default new Vuex.Store({
@@ -17,6 +18,7 @@ export default new Vuex.Store({
     modules: {
         navigation,
         select,
-        modal
+        modal,
+        user
     }
 })

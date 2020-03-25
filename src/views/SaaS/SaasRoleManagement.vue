@@ -52,9 +52,11 @@
 
         inquireLists() {
             services.get_list({pageIndex: 1, pageNumber: 10})
-                .then(res => {
-                    this.tableData = res.list;
+                .then((res: any) => {
+                    console.log(res, 'listres');
+                    this.tableData = res;
                 })
+
         }
 
         created() {

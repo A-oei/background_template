@@ -12,6 +12,8 @@ Vue.config.productionTip = false;
 import config from "@/app.config";
 import http from '@/core/utils/require';
 
+import '@/mock/index.js';
+
 http.config({
     baseURL: config.baseURL
 })
@@ -27,6 +29,7 @@ Vue.directive('validator', {
 
 //导入公共方法
 import common from "@/components/index";
+import require from "@/core/utils/require";
 
 Vue.use(common);
 

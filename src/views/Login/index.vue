@@ -31,7 +31,7 @@
     import {Vue, Component} from 'vue-property-decorator';
     import services from '@/services/login';
     import rules from "@/core/utils/rules/index";
-
+    import {RequestErrorInfo, RequestSuccessInfo} from '@/core/utils/type/interface'
 
     @Component({})
     export default class Login extends Vue {
@@ -44,28 +44,24 @@
         }
 
         login() {
-            this.$refs['aoeiForm'].validate((valid) => {
+            this.$refs['aoeiForm'].validate((valid: string) => {
 
                 if (valid) {
                     services.login({username: this.username, password: this.password})
-                        .then(res => {
-                            console.log(res, 'res');
+                        .then((res: RequestSuccessInfo) => {
                             window.localStorage.setItem('aoei-token', res.accessToken);
-                            this.$message({message: '登录成功', type: 'success'});
-                            this.$router.push('/home1')
+                            this.$message({message: `登录成功，${res.username} 欢迎回来`, type: 'success'});
+                            this.$store.commit('set_user_info', res);
+                            this.$router.push('/');
                         })
-                        .catch(err => {
-                            this.$message({message: '登录失败', type: 'error'});
+                        .catch((err: RequestErrorInfo) => {
+                            this.$message({message: err.message, type: 'error'});
                         })
-                }
-                else {
+                } else {
                     this.$message({message: '参数校验不通过，请检查后重试', type: 'error'});
                 }
             })
-
-
         }
-
     }
 </script>
 <style lang="scss" scoped>

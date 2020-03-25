@@ -32,7 +32,7 @@
     </div>
 </template>
 <script>
-
+    import servers from "@/services/login";
 
     export default {
         components: {},
@@ -41,7 +41,7 @@
             return {
                 tert: '1',
                 dialogVisible: false,
-                adatee:'555'
+                adatee: '555'
             }
         },
         methods: {
@@ -52,6 +52,5 @@
                 console.log(i, 'i');
             }
         }
-
     };
 </script>

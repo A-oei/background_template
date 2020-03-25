@@ -12,7 +12,7 @@
                     v-validator="validatorFn"
                     :type="type"
                     :placeholder="placeholder"
-                    :style="{borderColor:moonError!='success'?'#f56c6c':''}"
+                    :style="{borderColor:check&&moonError!='success'?'#f56c6c':''}"
                     v-on="inputListeners"
                     :value="textField"/>
             <!--@input="$emit('input', $event.target.value)"-->
@@ -71,9 +71,11 @@
     .aoei-form-input {
         display: flex;
         align-items: center;
+
         .form-input-wrap {
             position: relative;
             height: 100%;
+
             > input {
                 border-radius: 4px;
                 background-color: #fff;
@@ -81,11 +83,13 @@
                 height: 100%;
                 padding: 0 15px;
                 width: 100%;
+
                 &:focus {
                     border: 1px solid $focusColor;
                 }
             }
         }
+
         .aoei-moon-error {
             width: 100%;
             height: 25px;

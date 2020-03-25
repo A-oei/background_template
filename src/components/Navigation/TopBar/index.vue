@@ -9,7 +9,7 @@
             <span class="user-header"/>
             <aoei-dropdown class="user-options" @command="userOperation">
                 <div class="user-name">
-                    <span>admin</span>
+                    <span>{{$store.state.user.userInfo.username}}</span>
                     <span class="icon iconfont aoei-icon-test69"></span>
                 </div>
                 <aoei-dropdown-menu slot="dropdown">
@@ -66,9 +66,11 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         .top-bar-logo {
             display: flex;
             align-items: center;
+
             span {
                 &:nth-of-type(1) {
                     width: 100px;
@@ -89,6 +91,7 @@
             border-left: .5px solid rgba(0, 0, 0, .2);
             display: flex;
             align-items: center;
+
             .user-header {
                 width: 30px;
                 height: 30px;
@@ -96,26 +99,33 @@
                 background-size: cover;
                 margin-left: 20px;
             }
+
             .user-options {
                 margin: 0 10px 0 15px;
+
                 &::v-deep {
                     .user-name {
                         display: flex;
                         align-items: center;
+
                         span:nth-of-type(1) {
                             font-size: 10px;
                         }
                     }
+
                     .user-welcome {
                         line-height: 30px;
                         padding-left: 20px;
                         font-size: 12px;
                         color: #718295;
                     }
+
                     .options-change-password, .options-out {
                         text-align: left !important;
+
                         span {
                             color: #161b22;
+
                             &:nth-of-type(1) {
                                 margin-right: 5px;
                             }

@@ -7,7 +7,10 @@ const loginRequire = http.create({
 })
 
 export default {
+    // login(params: object) {
+    //     return loginRequire.post('wecloud/saas/login', params, null, true)
+    // },
     login(params: object) {
-        return loginRequire.post('wecloud/saas/login', params, null,true)
+        return http.post('/mock/login', params, null)
     }
 }
